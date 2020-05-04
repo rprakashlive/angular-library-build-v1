@@ -9,7 +9,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Build package
 
-Do `npm install` initially and run `npm run package`. it will generate package file path you will see in console navigate and copy the file path and use any package json file.
+Do `npm install` initially and run `npm run package`. it will generate package file path you will see in console. Navigate and copy the file path and use any package json file.
 
 
 ## Code scaffolding
