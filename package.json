@@ -27,9 +27,13 @@
     "concat": "^1.0.3",
     "fs-extra": "^9.0.0",
     "rxjs": "~6.4.0",
+    "rxjs-compat": "^6.5.4",
     "widget-app-lib": "./dist/widget-app-lib/widget-app-lib-0.0.1.tgz",
     "tslib": "^1.9.0",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.9.1",
+    "moment": "^2.24.0",
+    "bootstrap": "^4.4.1",
+    "ng6-toastr-notifications": "^1.0.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.800.0",
