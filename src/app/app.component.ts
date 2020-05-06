@@ -24,20 +24,30 @@ export class AppComponent {
   widgetSelector:any = 'enl-widget-app-lib2'
   widgetArr:any = [{
     "widgetSelector" : "enl-widget-app-lib",
-    "widgetComponent" : ""
+    "widgetComponent" : "WidgetComponent"
   },{
     "widgetSelector" : "enl-widget-app-lib2",
-    "widgetComponent" : ""
+    "widgetComponent" : "WidgetComponent2"
   }]
+
+   widgetClasses:any = {
+    'WidgetComponent': WidgetComponent,
+    'WidgetComponent2': WidgetComponent2        
+}
 
   ngOnInit() {
     this.subscription = this.widgetService.getCurrentUserObjUpdated().subscribe(value => {
       console.log("value widget 1 receive back", value);
     });
-    const factory = this.resolver.resolveComponentFactory(WidgetComponent2);
+
+    this.widgetArr.forEach(element => {      
+      const factory = this.resolver.resolveComponentFactory(this.widgetClasses[element.widgetComponent]);
       this.componentRef = this.entry.createComponent(factory);
-      const factory1 = this.resolver.resolveComponentFactory(WidgetComponent);
-      this.componentRef = this.entry.createComponent(factory1);
+    });
+    //  const factory = this.resolver.resolveComponentFactory(WidgetComponent2);
+    //   this.componentRef = this.entry.createComponent(factory);
+    //   const factory1 = this.resolver.resolveComponentFactory(WidgetComponent);
+    //   this.componentRef = this.entry.createComponent(factory1);
   }
   
   getMsg() {
@@ -56,6 +66,10 @@ export class AppComponent {
     this.subscription = this.widgetService.getCurrentUserObjUpdated().subscribe(value => {
       console.log("value widget 1 receive back", value);
     });
+  }
+
+  changeCount(data) {
+    console.log("app html says output emitter received from lib component", data);
   }
 
 }

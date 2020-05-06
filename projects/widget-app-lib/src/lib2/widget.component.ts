@@ -11,4 +11,8 @@ export class WidgetComponent2 {
   sayHi(){
     return this.givenString = "response test"
   }
+
+  changeCount(data) {
+    console.log("lib1 html says output emitter received from lib component", data);
+  }
 }
