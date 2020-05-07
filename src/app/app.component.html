@@ -7,9 +7,9 @@
 using ng template<br>
 
 
-<ng-template #loadComponent>
+<!-- <ng-template #loadComponent>
 
-</ng-template>
+</ng-template> -->
 
 <br>
 --------------------------<br>
@@ -31,11 +31,12 @@ using ng dynamic npm <br>
 
 
 
-<div>
+<div *ngIf="widgetClassesArr.length > 0">
 
     <ng-container *ngFor="let shape of widgetClassesArr">
-
-
+        <br>
+{{shape.widgetSelector}}
+<br>
         <ndc-dynamic [ndcDynamicComponent]="shape.widgetComponent" [ndcDynamicInputs]="inputs" [ndcDynamicOutputs]="{
 widget_display: { handler: doSomething, args: ['$event', tplVar] },
 widget_display1: { handler: doSomething1, args: ['$event', tplVar]}

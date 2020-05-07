@@ -38,13 +38,7 @@ export class AppComponent {
     'WidgetComponent2': WidgetComponent2        
 }
 
-widgetClassesArr:any = [{
-  "widgetSelector" : "enl-widget-app-lib",
-  "widgetComponent" : WidgetComponent
-},{
-  "widgetSelector" : "enl-widget-app-lib2",
-  "widgetComponent" : WidgetComponent2
-}]
+widgetClassesArr:any = []
 component:any;
 
 inputs = {
@@ -52,18 +46,28 @@ inputs = {
 };
 
   ngOnInit() {
+    this.widgetClassesArr = [];
     this.component = [WidgetComponent, WidgetComponent2];
     this.updatedArr = [];
     this.subscription = this.widgetService.getCurrentUserObjUpdated().subscribe(value => {
       console.log("value widget 1 receive back", value);
     });
 
-    this.widgetArr.forEach(element => {      
-      const factory = this.resolver.resolveComponentFactory(this.widgetClasses[element.widgetComponent]);
-      this.componentRef = this.entry.createComponent(factory);
-      this.updatedArr.push(this.componentRef)
+    this.widgetArr.forEach(element => {
+      console.log("element.widgetComponent",element.widgetComponent);
+     if(this.widgetClasses[element.widgetComponent]){
+       
+      element.widgetComponent = this.widgetClasses[element.widgetComponent];
+       this.widgetClassesArr.push(element)
+     }
+
+
+
+      // const factory = this.resolver.resolveComponentFactory(this.widgetClasses[element.widgetComponent]);
+      // this.componentRef = this.entry.createComponent(factory);
+      // this.updatedArr.push(this.componentRef)
     });
-    console.log("this.updatedArr",this.updatedArr)
+    // console.log("this.updatedArr",this.updatedArr)
     //  const factory = this.resolver.resolveComponentFactory(WidgetComponent2);
     //   this.componentRef = this.entry.createComponent(factory);
     //   const factory1 = this.resolver.resolveComponentFactory(WidgetComponent);
