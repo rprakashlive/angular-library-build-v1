@@ -1,4 +1,4 @@
-import { Component, Output , EventEmitter} from '@angular/core';
+import { Component, Output , Input, EventEmitter} from '@angular/core';
 import { environment } from '../environments/environment';
 import * as moment_ from 'moment';
 const moment = moment_;
@@ -14,7 +14,10 @@ import {WidgetService} from './widget.service';
 export class WidgetComponent {
   givenString:any = "";
   userObj:any = {};
+  @Input() widget_input: String;
+  @Input() widget_input1: String;
   @Output() widget_display = new EventEmitter();
+  @Output() widget_display1 = new EventEmitter();
   private subscription: Subscription 
   constructor(private toastr: ToastrManager, private widgetService: WidgetService) {}
 
@@ -25,6 +28,8 @@ export class WidgetComponent {
     this.userObj = value;
     this.widgetService.setCurrentUserObjUpdated(this.userObj);
     this.widget_display.emit(this.userObj);
+    value['address123'] = "gobi1";
+    this.widget_display1.emit(value['address123']);
   });
   }
   sayHi(){

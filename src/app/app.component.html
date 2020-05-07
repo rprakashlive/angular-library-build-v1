@@ -1,47 +1,53 @@
-
 <p><button (click)="getMsg()">Click</button></p>
 
 <p><button (click)="transferValue()">send value to widgetComponent1</button></p>
 
 
-------------------------------------
-
+------------------------------------<br>
+using ng template<br>
 
 
 <ng-template #loadComponent>
-    
+
 </ng-template>
 
-
---------------------------
-*****************************
-
+<br>
+--------------------------<br>
+*****************************<br>
+using ng container<br>
+<!-- 
 <ng-container *ngFor="let shape of widgetClassesArr">
-    
-    <ng-container *ngComponentOutlet="shape">
-        
-    </ng-container>
+
+<ng-container *ngComponentOutlet="shape">
+
 </ng-container>
-*********************************
+</ng-container><br> -->
+*********************************<br>
 
-<p><button (click)="getMsg1()">Click</button></p>
-{{getMsgText}}
+<!-- <p><button (click)="getMsg1()">Click</button></p>
+{{getMsgText}} -->
+==============================================<br>
+using ng dynamic npm <br>
 
-<ng-container *ngFor="let shape of widgetClassesArr">
-    <ndc-dynamic
-    [ndcDynamicComponent]="shape"
-    [ndcDynamicOutputs]="{
-        widget_display: { handler: doSomething, args: ['$event', tplVar] }
-    }"
-  ></ndc-dynamic>
-<!-- <ng-template [ngComponentOutlet]="shape"
-                           [ndcDynamicInputs]="inputs"
-                           [ndcDynamicOutputs]="outputs"
-                           ></ng-template> -->
-                           </ng-container>
 
+
+<div>
+
+    <ng-container *ngFor="let shape of widgetClassesArr">
+
+
+        <ndc-dynamic [ndcDynamicComponent]="shape.widgetComponent" [ndcDynamicInputs]="inputs" [ndcDynamicOutputs]="{
+widget_display: { handler: doSomething, args: ['$event', tplVar] },
+widget_display1: { handler: doSomething1, args: ['$event', tplVar]}
+}">
+        </ndc-dynamic>
+
+
+
+    </ng-container>
+
+</div>
 <!-- <enl-widget-app-lib2>
-  
-</enl-widget-app-lib2>
- -->
 
+</enl-widget-app-lib2>
+-->

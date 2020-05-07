@@ -38,8 +38,19 @@ export class AppComponent {
     'WidgetComponent2': WidgetComponent2        
 }
 
-widgetClassesArr:any = [WidgetComponent, WidgetComponent2]
+widgetClassesArr:any = [{
+  "widgetSelector" : "enl-widget-app-lib",
+  "widgetComponent" : WidgetComponent
+},{
+  "widgetSelector" : "enl-widget-app-lib2",
+  "widgetComponent" : WidgetComponent2
+}]
 component:any;
+
+inputs = {
+  widget_input: 'world'
+};
+
   ngOnInit() {
     this.component = [WidgetComponent, WidgetComponent2];
     this.updatedArr = [];
@@ -67,6 +78,12 @@ component:any;
   doSomething(event, tplValue) {
     console.log("event",event);
   }
+
+  doSomething1(event, tplValue) {
+    console.log("event",event);
+  }
+
+  
   getMsg1() {
     this.getMsgText = this.widgetComponent2.sayHi();
   }
