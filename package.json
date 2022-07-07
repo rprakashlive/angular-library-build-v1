@@ -27,7 +27,7 @@
     "bootstrap": "^4.4.1",
     "concat": "^1.0.3",
     "fs-extra": "^9.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "ng-dynamic-component": "^6.0.0",
     "ng6-toastr-notifications": "^1.0.4",
     "rxjs": "~6.4.0",
